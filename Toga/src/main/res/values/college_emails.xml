@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="email_map">
+        <item>husky.neu.edu|Northeastern</item>
+        <item>mit.edu|MIT</item>
+        <item>college.harvard.edu|Harvard</item>
+        <item>bu.edu|Boston University</item>
+        <item>test.edu|MIT</item>
+    </string-array>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              >
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="8">
+
+
+        <LinearLayout
+                android:id="@+id/verify_downloadProgress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:layout_margin="16dp">
+
+            <ProgressBar
+                    style="?android:attr/progressBarStyleLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp">
+            </ProgressBar>
+
+            <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/pressed_toga"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:text="Checking if account has been verified."
+                    android:layout_marginBottom="8dp"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/verify_content"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="16dp">
+
+            <ImageView
+                    android:id="@+id/new_user_verify_picture"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/no_invitations"
+                    android:scaleType="centerInside"
+                    />
+
+            <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/pressed_toga"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:text="Please check your email and confirm our message to verify that you are a valid college student."
+                    android:layout_marginBottom="8dp"
+                    />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/new_user_verify_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="16dp"
+        android:text="Email verified!"
+        android:textColor="@color/header_button_default"/>
+
+</LinearLayout>

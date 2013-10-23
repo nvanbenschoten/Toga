@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Toga</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="host_party_action">Host party</string>
+    <string name="no_hosted_parties">You currently are hosting no parties</string>
+    <string name="no_parties">There are currently no parties</string>
+
+    <string-array name="nav_drawer_array">
+        <item>Party Now</item>
+        <item>Browse</item>
+        <item>Map</item>
+        <item>Profile</item>
+        <item>Hosting</item>
+        <item>Invites</item>
+    </string-array>
+    <string-array name="fragment_adapter_array">
+        <item>Party 1</item>
+        <item>Party 2</item>
+        <item>Party 3</item>
+        <item>Party 4</item>
+        <item>Party 5</item>
+        <item>Party 6</item>
+        <item>Party 7</item>
+        <item>Party 8</item>
+    </string-array>
+
+    <string name="title_activity_create_party">Create Party</string>
+    <string name="create_party_title_label">Party Title</string>
+    <string name="create_party_title_hint">Enter a title for your party</string>
+    <string name="create_party_type">Party Type?</string>
+    <string name="create_party_location_hint">Enter your party\'s location</string>
+    <string name="create_party_cancel">Cancel</string>
+    <string name="create_party_confirm">Host</string>
+    <string name="party_type_public">Public</string>
+    <string name="party_type_private">Private</string>
+    <string name="party_type_vip">VIP</string>
+    <string name="done">Host</string>
+    <string name="cancel">Cancel</string>
+    <string name="create_party_description_hint">Description (optional)</string>
+    <string name="edit">Edit</string>
+    <string name="title_activity_party_details">MainActivity</string>
+    <string name="action_sort">Sort</string>
+    <string name="get_started">Get started</string>
+    <string name="continue_new_user">Continue</string>
+    <string name="title_activity_new_user_activiy">MainActivity</string>
+    <string name="change_theme">CHANGE THEME</string>
+    <string name="party_location">Party Location</string>
+    <string name="register">Sign Up</string>
+    <string name="navigate">Navigate</string>
+    <string name="refresh">Refresh</string>
+    <string name="sign_up">To sign up or log in.</string>
+    <string name="first_and_last">First and Last</string>
+    <string name="edu_email">.edu email</string>
+    <string name="name">Your name</string>
+    <string name="choose_password">Choose password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="password">Password</string>
+    <string name="title_activity_verify_email">MainActivity</string>
+    <string name="log_in">Log in</string>
+    <string name="party_details">Party Details</string>
+
+</resources>

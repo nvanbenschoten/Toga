@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+        >
+
+    <ScrollView
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <FrameLayout
+                    android:layout_height="96dp"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="8dp"
+                    >
+
+                <ImageView
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:src="@drawable/party_frat_house"
+                        android:scaleType="centerCrop"
+                        />
+
+                <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_gravity="bottom"
+                        android:paddingRight="8dp"
+                        android:gravity="right"
+                        android:textColor="#FFF"
+                        android:textSize="12sp"
+                        android:text="@string/change_theme"
+                        android:background="#BB000000"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        />
+
+            </FrameLayout>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/create_party_title_editText"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="@string/create_party_title_hint"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_party_type"
+                    style="?android:listSeparatorTextViewStyle"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="4dp"/>
+
+            <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal"
+                        >
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                    <RadioButton android:id="@+id/radio_public"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/party_type_public"
+                                 />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                    <RadioButton android:id="@+id/radio_private"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/party_type_private"
+                                 />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                    <RadioButton android:id="@+id/radio_vip"
+                                 android:layout_width="wrap_content"
+                                 android:layout_height="wrap_content"
+                                 android:text="@string/party_type_vip"
+                                 />
+                </LinearLayout>
+
+            </RadioGroup>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp">
+
+                <Button
+                        android:id="@+id/create_party_date_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:paddingLeft="12dp"
+                        style="?android:attr/spinnerStyle"/>
+
+                <Button
+                        android:id="@+id/create_party_time_button"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="12dp"
+                        style="?android:attr/spinnerStyle"/>
+
+
+            </LinearLayout>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/create_party_location_editText"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="@string/create_party_location_hint"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:clickable="true"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/create_party_description_editText"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:minLines="5"
+                    android:gravity="top|left"
+                    android:hint="@string/create_party_description_hint"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

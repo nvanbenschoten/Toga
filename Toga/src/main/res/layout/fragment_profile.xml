@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#e5e5e5">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:id="@+id/card_list_item_layout"
+                  android:layout_margin="12dp"
+                  style="@style/card_outer">
+
+        <RelativeLayout android:id="@+id/inner_frame" style="@style/card_inner">
+
+            <ImageView android:id="@android:id/icon" style="@style/card_thumbnail"/>
+
+            <RelativeLayout android:id="@+id/titleFrame" style="@style/card_title_frame">
+
+                <TextView android:id="@android:id/title" style="@style/card_title"/>
+
+                <!--<ImageButton android:id="@android:id/button1" style="@style/card_popup_anchor"/>-->
+
+            </RelativeLayout>
+
+            <TextView android:id="@android:id/content" style="@style/card_content"/>
+
+        </RelativeLayout>
+
+        <ImageView style="@style/card_shadow"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

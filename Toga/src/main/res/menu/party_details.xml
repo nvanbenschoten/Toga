@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_menu_navigate"
+          android:title="@string/navigate"
+          android:icon="@drawable/ic_action_directions"
+          android:orderInCategory="1"
+          app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_menu_edit_party"
+        android:title="@string/edit"
+        android:icon="@drawable/ic_action_edit"
+        android:orderInCategory="2"
+        app:showAsAction="ifRoom" />
+</menu>
