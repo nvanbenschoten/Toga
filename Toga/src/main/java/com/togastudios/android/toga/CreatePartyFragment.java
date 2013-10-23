@@ -55,6 +55,7 @@ public class CreatePartyFragment extends Fragment {
 
         fm = getActivity().getSupportFragmentManager();
 
+        // Create new party
         mParty = new Party();
         mParty.initParty();
         ParseUser current = ParseUser.getCurrentUser();
@@ -77,6 +78,7 @@ public class CreatePartyFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Set party title
                 mParty.setTitle(s.toString());
             }
 
@@ -93,6 +95,7 @@ public class CreatePartyFragment extends Fragment {
                 Location geoPoint = mParty.getLocation();
                 String locString = mParty.getLocationString();
 
+                // Launch location picker dialog
                 LocationPickerFragment locationDialog;
                 if (geoPoint == null || locString == null) {
                     locationDialog = LocationPickerFragment.newInstance(null, null);

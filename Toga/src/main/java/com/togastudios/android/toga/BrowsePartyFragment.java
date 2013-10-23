@@ -100,7 +100,7 @@ public class BrowsePartyFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_sort:
-
+                // TODO implement sort
                 return true;
             case R.id.action_refresh:
                 // Resets list adapter and gets parties

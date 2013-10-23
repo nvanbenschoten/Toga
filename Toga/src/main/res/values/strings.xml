@@ -63,5 +63,6 @@
     <string name="title_activity_verify_email">MainActivity</string>
     <string name="log_in">Log in</string>
     <string name="party_details">Party Details</string>
+    <string name="verify_email">Verify Email</string>
 
 </resources>

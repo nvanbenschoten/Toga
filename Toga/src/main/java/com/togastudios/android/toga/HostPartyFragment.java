@@ -41,6 +41,7 @@ public class HostPartyFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_host_party_list, container, false);
 
+        // Get references to view elements
         mEmptyButton = (Button)v.findViewById(R.id.empty_host_party);
         mEmptyButton.setOnClickListener(new View.OnClickListener() {
             @Override

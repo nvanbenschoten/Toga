@@ -58,7 +58,7 @@
 
         <activity
             android:name="com.togastudios.android.toga.VerifyEmailActivity"
-            android:label="@string/title_activity_verify_email" >
+            android:label="@string/verify_email" >
         </activity>
     </application>
 
