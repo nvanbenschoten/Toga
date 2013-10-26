@@ -12,11 +12,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -44,6 +47,8 @@ public class CreatePartyFragment extends Fragment {
     private RadioButton mPrivate;
     private RadioButton mVip;
     private Calendar mDate;
+    private FrameLayout mThemeLayout;
+    private ImageView mClickThemeImage;
 
     private FragmentManager fm;
 
@@ -68,6 +73,25 @@ public class CreatePartyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create_party, container, false);
+
+        mClickThemeImage = (ImageView)v.findViewById(R.id.create_party_theme_layout_background);
+
+        mThemeLayout = (FrameLayout)v.findViewById(R.id.create_party_theme_layout);
+        mThemeLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        mClickThemeImage.setVisibility(View.VISIBLE);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        mClickThemeImage.setVisibility(View.INVISIBLE);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
 
         mTitleField = (EditText)v.findViewById(R.id.create_party_title_editText);
         mTitleField.addTextChangedListener(new TextWatcher() {

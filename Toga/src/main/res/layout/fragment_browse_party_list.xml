@@ -29,12 +29,12 @@
                 android:id="@android:id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dip"
+                android:padding="4dip"
                 android:clipToPadding="false"
                 android:columnWidth="240dp"
                 android:numColumns="auto_fit"
-                android:verticalSpacing="10dp"
-                android:horizontalSpacing="10dp"
+                android:verticalSpacing="5dp"
+                android:horizontalSpacing="5dp"
                 android:stretchMode="columnWidth"/>
 
         <LinearLayout

@@ -17,9 +17,11 @@
                 android:orientation="vertical">
 
             <FrameLayout
+                    android:id="@+id/create_party_theme_layout"
                     android:layout_height="96dp"
                     android:layout_width="match_parent"
                     android:layout_marginBottom="8dp"
+                    android:clickable="true"
                     >
 
                 <ImageView
@@ -41,6 +43,15 @@
                         android:background="#BB000000"
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
+                        />
+
+                <ImageView
+                        android:id="@+id/create_party_theme_layout_background"
+                        android:src="@drawable/list_pressed_holo_light"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:visibility="invisible"
                         />
 
             </FrameLayout>

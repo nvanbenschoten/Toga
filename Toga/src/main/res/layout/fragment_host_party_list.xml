@@ -29,7 +29,7 @@
                 android:id="@android:id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dip"
+                android:padding="4dip"
                 android:clipToPadding="false"/>
 
         <LinearLayout
