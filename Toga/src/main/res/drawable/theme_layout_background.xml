@@ -3,15 +3,15 @@
 
     <item android:state_pressed="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/list_pressed_holo_light" />
+          android:drawable="@drawable/list_focused_holo" />
 
     <item android:state_focused="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/list_pressed_holo_light" />
+          android:drawable="@drawable/list_focused_holo" />
 
     <item android:state_selected="true"
           android:state_window_focused="true"
-          android:drawable="@drawable/list_pressed_holo_light" />
+          android:drawable="@drawable/list_focused_holo" />
 
     <item
            android:drawable="@android:color/transparent" />
