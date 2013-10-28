@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/theme_list_layout"
+        android:layout_height="96dp"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:padding="4dp"
+        >
+
+        <ImageView
+                android:id="@+id/theme_list_photo"
+                android:layout_height="96dp"
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                />
+
+        <FrameLayout
+                android:id="@+id/theme_list_layout_background"
+                android:background="@drawable/theme_layout_background"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                />
+
+</FrameLayout>

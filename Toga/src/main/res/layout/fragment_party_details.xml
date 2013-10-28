@@ -33,6 +33,7 @@
                     android:orientation="vertical">
 
                 <ImageView
+                        android:id="@+id/party_details_theme"
                         android:layout_height="96dp"
                         android:layout_width="match_parent"
                         android:src="@drawable/black_light_party"

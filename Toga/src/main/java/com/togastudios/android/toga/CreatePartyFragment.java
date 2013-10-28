@@ -12,7 +12,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -36,6 +35,7 @@ public class CreatePartyFragment extends Fragment {
             "com.togasoftware.android.toga.dialog_location";
 
     public static final int REQUEST_LOCATION = 0;
+    public static final int REQUEST_THEME = 1;
 
     private Party mParty;
     private EditText mTitleField;
@@ -48,7 +48,7 @@ public class CreatePartyFragment extends Fragment {
     private RadioButton mVip;
     private Calendar mDate;
     private FrameLayout mThemeLayout;
-    private ImageView mClickThemeImage;
+    private ImageView mThemeImage;
 
     private FragmentManager fm;
 
@@ -74,22 +74,15 @@ public class CreatePartyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_create_party, container, false);
 
-        mClickThemeImage = (ImageView)v.findViewById(R.id.create_party_theme_layout_background);
+        mThemeImage = (ImageView)v.findViewById(R.id.create_party_theme_image);
+        mThemeImage.setImageResource(ThemePhotoBuilder.getThemeResource(mParty.getThemeId()));
 
-        mThemeLayout = (FrameLayout)v.findViewById(R.id.create_party_theme_layout);
-        mThemeLayout.setOnTouchListener(new View.OnTouchListener() {
+        mThemeLayout = (FrameLayout)v.findViewById(R.id.create_party_theme_layout_background);
+        mThemeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        mClickThemeImage.setVisibility(View.VISIBLE);
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        mClickThemeImage.setVisibility(View.INVISIBLE);
-                        return true;
-                    default:
-                        return false;
-                }
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), ThemePickerActivity.class);
+                startActivityForResult(i, REQUEST_THEME);
             }
         });
 
@@ -187,6 +180,10 @@ public class CreatePartyFragment extends Fragment {
                     // Set edittext text
                     mLocationField.setText(locationString);
                 }
+                break;
+            case REQUEST_THEME:
+                mParty.setThemeId(data.getIntExtra(ThemePickerFragment.EXTRA_THEME, 0));
+                mThemeImage.setImageResource(ThemePhotoBuilder.getThemeResource(mParty.getThemeId()));
                 break;
             default:
                 super.onActivityResult(requestCode, resultCode, data);

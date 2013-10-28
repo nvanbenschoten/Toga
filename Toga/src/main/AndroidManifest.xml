@@ -48,8 +48,7 @@
         </activity>
         <activity
             android:name="com.togastudios.android.toga.NewUserActiviy"
-            android:label="@string/register"
-             >
+            android:label="@string/register" >
         </activity>
 
         <meta-data
@@ -59,6 +58,10 @@
         <activity
             android:name="com.togastudios.android.toga.VerifyEmailActivity"
             android:label="@string/verify_email" >
+        </activity>
+        <activity
+            android:name="com.togastudios.android.toga.ThemePickerActivity"
+            android:label="@string/theme_picker" >
         </activity>
     </application>
 

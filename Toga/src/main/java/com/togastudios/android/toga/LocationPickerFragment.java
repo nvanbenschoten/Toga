@@ -31,8 +31,6 @@ public class LocationPickerFragment extends DialogFragment {
     public static final String EXTRA_LOCATION =
             "com.togastudios.android.toga.location_picker_location";
 
-    public static final int RETURN_BLANK = 123432;
-
     private EditText mEditText;
     private ImageButton mMyLocationButton;
     private String mLocationString;

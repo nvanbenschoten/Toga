@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -39,6 +40,7 @@ public class PartyDetailsFragment extends Fragment {
     private RadioButton mPublic;
     private RadioButton mPrivate;
     private RadioButton mVip;
+    private ImageView mClickThemeImage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class PartyDetailsFragment extends Fragment {
 
         if (!getArguments().getString(EXTRA_PARTY).equals(EXTRA_NOW))
             ((PartyDetailsActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mClickThemeImage = (ImageView)v.findViewById(R.id.party_details_theme);
 
         mProgressBar = (LinearLayout)v.findViewById(R.id.party_details_downloadProgress);
 
@@ -138,6 +142,8 @@ public class PartyDetailsFragment extends Fragment {
                     mTitleField.setText(mParty.getTitle().toString());
                     if (!getArguments().getString(EXTRA_PARTY).equals(EXTRA_NOW))
                         ((PartyDetailsActivity)getActivity()).getSupportActionBar().setTitle(mParty.getTitle());
+
+                    mClickThemeImage.setImageResource(ThemePhotoBuilder.getThemeResource(mParty.getThemeId()));
 
                     mLocationField.setText(mParty.getLocationString());
 

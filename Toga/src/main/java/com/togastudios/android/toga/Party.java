@@ -23,6 +23,7 @@ public class Party extends ParseObject {
     public final static String typeKey = "type";
     public final static String hostKey = "host";
     public final static String schoolKey = "school";
+    public final static String themeIdKey = "themeId";
 
     public Party() {
 
@@ -31,6 +32,7 @@ public class Party extends ParseObject {
     public void initParty() {
         this.setId();
         this.setType(-1);
+        this.setThemeId(0);
         this.setTitle("");
         this.setSchool("");
         this.setDescription("");
@@ -95,6 +97,14 @@ public class Party extends ParseObject {
 
     public void setType(int type) {
         put(typeKey, type);
+    }
+
+    public int getThemeId() {
+        return getInt(themeIdKey);
+    }
+
+    public void setThemeId(int type) {
+        put(themeIdKey, type);
     }
 
     public String getHost() throws ParseException {

@@ -8,7 +8,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                   android:id="@+id/card_list_item_layout"
-                  android:layout_margin="12dp"
+                  android:layout_margin="4dp"
                   style="@style/card_outer">
 
         <RelativeLayout android:id="@+id/inner_frame" style="@style/card_inner">

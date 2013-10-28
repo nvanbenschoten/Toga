@@ -25,9 +25,9 @@
                     >
 
                 <ImageView
+                        android:id="@+id/create_party_theme_image"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
-                        android:src="@drawable/party_frat_house"
                         android:scaleType="centerCrop"
                         />
 
@@ -45,13 +45,11 @@
                         android:paddingBottom="4dp"
                         />
 
-                <ImageView
+                <FrameLayout
                         android:id="@+id/create_party_theme_layout_background"
-                        android:src="@drawable/list_pressed_holo_light"
+                        android:background="@drawable/theme_layout_background"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
-                        android:scaleType="fitXY"
-                        android:visibility="invisible"
                         />
 
             </FrameLayout>
