@@ -34,10 +34,13 @@ public class PartyMapFragment extends SupportMapFragment {
     private HashMap<String, Party> mParties;
     private Location mMyLocation;
 
+    private boolean mFirstLocation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        mFirstLocation = true;
     }
 
     @Override
@@ -79,12 +82,14 @@ public class PartyMapFragment extends SupportMapFragment {
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                //Toast.makeText(getActivity(), "Moved to " + arg0.toString(), Toast.LENGTH_LONG).show();
-                CameraPosition cp = new CameraPosition.Builder()
-                        .target(new LatLng(location.getLatitude(), location.getLongitude()))
-                        .zoom((float)14.5)
-                        .build();
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
+                if (mFirstLocation) {
+                    CameraPosition cp = new CameraPosition.Builder()
+                            .target(new LatLng(location.getLatitude(), location.getLongitude()))
+                            .zoom((float)14.5)
+                            .build();
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cp));
+                    mFirstLocation = false;
+                }
 
                 mMyLocation = location;
             }

@@ -47,7 +47,7 @@
 
                 <FrameLayout
                         android:id="@+id/create_party_theme_layout_background"
-                        android:background="@drawable/theme_layout_background"
+                        android:background="@drawable/themed_layout_background"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         />

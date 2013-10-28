@@ -120,6 +120,8 @@ public class HostPartyFragment extends ListFragment {
                 mProgressBar.setVisibility(View.GONE);
                 mContent.setVisibility(View.VISIBLE);
                 if (e == null) {
+                    if (getActivity() == null) return;
+
                     ArrayList<Party> tmp = new ArrayList<Party>(partyList);
                     PartyCardAdapter adapter = new PartyCardAdapter(getActivity(), tmp);
                     setListAdapter(adapter);
