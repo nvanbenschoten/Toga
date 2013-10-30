@@ -1,5 +1,7 @@
 package com.togastudios.android.toga;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NavUtils;
@@ -100,6 +102,16 @@ public class PartyDetailsFragment extends Fragment {
                 }
                 return true;
             case R.id.action_menu_navigate:
+
+                if (mParty.getLocation() == null) {
+                    return false;
+                }
+
+                String url = "http://maps.google.com/maps?daddr="+mParty.getLocation().getLatitude()+","+mParty.getLocation().getLongitude()+"&mode=walking";
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(url));
+                //intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                startActivity(intent);
+
 
                 return true;
             case R.id.action_menu_edit_party:
