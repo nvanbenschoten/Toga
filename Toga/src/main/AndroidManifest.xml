@@ -26,6 +26,11 @@
         android:icon="@drawable/toga"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+
+        <meta-data
+                android:name="com.google.android.maps.v2.API_KEY"
+                android:value="AIzaSyBZDkgOySioJ68GEqSqYxtonh2cam98q7k" />
+
         <activity
             android:name="com.togastudios.android.toga.NavDrawerActivity"
             android:label="@string/app_name" >
@@ -35,10 +40,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.togastudios.android.toga.CreatePartyActivity"
             android:label="@string/title_activity_create_party" >
         </activity>
+
         <activity
             android:name="com.togastudios.android.toga.PartyDetailsActivity"
             android:label="@string/party_details" >
@@ -46,19 +53,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".NavDrawerActivity" />
         </activity>
+
         <activity
             android:name="com.togastudios.android.toga.NewUserActiviy"
             android:label="@string/register" >
         </activity>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyBZDkgOySioJ68GEqSqYxtonh2cam98q7k" />
-
         <activity
             android:name="com.togastudios.android.toga.VerifyEmailActivity"
             android:label="@string/verify_email" >
         </activity>
+
         <activity
             android:name="com.togastudios.android.toga.ThemePickerActivity"
             android:label="@string/theme_picker" >

@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 public class InvitesFragment extends Fragment {
 
+    /**
+     * Called when the fragment is first created. Responsible for initializing the fragment.
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +19,13 @@ public class InvitesFragment extends Fragment {
         setRetainInstance(true);
     }
 
+    /**
+     * Called when the fragment is first created. Responsible for initializing the UI.
+     * @param inflater  The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container The parent view that the fragment's UI should be attached to
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     * @return The View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_invite_list, container, false);

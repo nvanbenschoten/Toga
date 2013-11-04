@@ -27,11 +27,11 @@ public class BrowsePartyFragment extends Fragment {
 
     private static final String TAG = "BrowsePartyFragment";
 
-    private GridView mGridView;
-    private Button mEmptyButton;
     private LinearLayout mProgressBar;
     private FrameLayout mContent;
+    private GridView mGridView;
     private LinearLayout mEmptyLayout;
+    private Button mEmptyButton;
 
     /**
      * Called when the fragment is first created. Responsible for initializing the fragment.
@@ -117,23 +117,17 @@ public class BrowsePartyFragment extends Fragment {
             case R.id.action_sort:
                 // TODO implement sort
                 return true;
+
             case R.id.action_refresh:
                 // Resets list adapter and gets parties
                 mGridView.setAdapter(null);
                 getParties();
                 return true;
+
             default:
                 // Non-fragment specific menu item
                 return super.onOptionsItemSelected(item);
         }
-    }
-
-    /**
-     * Launches the CreatePartyActivity to allow for party creation.
-     */
-    private void hostPartyButtonClicked() {
-        Intent i = new Intent(getActivity(), CreatePartyActivity.class);
-        startActivity(i);
     }
 
     /**
@@ -147,13 +141,20 @@ public class BrowsePartyFragment extends Fragment {
     }
 
     /**
-     * Populate the party list based on all parties not hosted by user.
+     * Launches the CreatePartyActivity to allow for party creation.
+     */
+    private void hostPartyButtonClicked() {
+        Intent i = new Intent(getActivity(), CreatePartyActivity.class);
+        startActivity(i);
+    }
+
+    /**
+     * Populate the party list based on all parties not hosted by the user.
      */
     private void getParties() {
         // Sets the progress bar to spin until query is done
         mProgressBar.setVisibility(View.VISIBLE);
         mContent.setVisibility(View.GONE);
-        mEmptyLayout.setVisibility(View.INVISIBLE);
 
         // Queries for all parties
         ParseQuery<Party> query = ParseQuery.getQuery(Party.class);
@@ -183,7 +184,7 @@ public class BrowsePartyFragment extends Fragment {
                         mGridView.setAdapter(adapter);
                     }
                 } else {
-                    Log.d(TAG, "Error: " + e.getMessage());
+                    Log.e(TAG, "Error: " + e.getMessage());
                 }
             }
         });

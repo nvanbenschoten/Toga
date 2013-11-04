@@ -70,5 +70,6 @@
     <string name="create_party_theme_description">Party theme</string>
     <string name="create_party_date_dialog">Date</string>
     <string name="create_party_time_dialog">Time</string>
+    <string name="invite_list_no_new">No new invitations</string>
 
 </resources>
