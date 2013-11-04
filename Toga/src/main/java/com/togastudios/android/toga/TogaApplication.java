@@ -5,7 +5,7 @@ import android.app.Application;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
-public class App extends Application {
+public class TogaApplication extends Application {
 
     @Override
     public void onCreate() {
@@ -15,6 +15,9 @@ public class App extends Application {
         initializeParse();
     }
 
+    /*
+     * Initialize Parse backend
+     */
     private void initializeParse() {
         // Registering subclasses
         ParseObject.registerSubclass(Party.class);

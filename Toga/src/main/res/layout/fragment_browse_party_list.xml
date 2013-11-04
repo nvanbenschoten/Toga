@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             android:background="#e5e5e5">
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e5e5e5">
 
     <LinearLayout
             android:id="@+id/browse_list_downloadProgress"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center"
             android:orientation="vertical"
-            android:visibility="gone" >
+            android:gravity="center">
 
         <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-        </ProgressBar>
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleLarge"/>
+
     </LinearLayout>
 
 
-    <FrameLayout android:id="@+id/browse_list_content"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent">
+    <FrameLayout
+            android:id="@+id/browse_list_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <GridView
                 android:id="@android:id/list"
@@ -35,7 +36,9 @@
                 android:numColumns="auto_fit"
                 android:verticalSpacing="5dp"
                 android:horizontalSpacing="5dp"
-                android:stretchMode="columnWidth"/>
+                android:stretchMode="columnWidth"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none"/>
 
         <LinearLayout
                 android:id="@android:id/empty"
@@ -50,19 +53,19 @@
                     android:gravity="center_horizontal"
                     android:paddingTop="32dp"
                     android:paddingBottom="16dp"
-                    android:text="There are currently no parties near you..."
-                    android:textColor="@color/header_button_default"
+                    android:text="@string/browse_party_no_parties_nearby"
+                    android:textColor="@color/header_grey"
                     android:textSize="20sp"/>
 
             <Button
                     android:id="@+id/empty_browse_host_party"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/header_button_default"
+                    android:textColor="@color/header_grey"
                     android:text="@string/host_party_action"/>
-
 
         </LinearLayout>
 
     </FrameLayout>
+
 </FrameLayout>

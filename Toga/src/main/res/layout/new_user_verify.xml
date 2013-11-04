@@ -81,6 +81,6 @@
         android:layout_weight="1"
         android:layout_margin="16dp"
         android:text="Email verified!"
-        android:textColor="@color/header_button_default"/>
+        android:textColor="@color/header_grey"/>
 
 </LinearLayout>

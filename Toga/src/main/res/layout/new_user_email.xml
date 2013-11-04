@@ -34,7 +34,7 @@
     <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textColor="@color/header_button_default"
+            android:textColor="@color/header_grey"
             android:textSize="14sp"
             android:text="@string/sign_up"
             android:layout_marginLeft="26dp"
@@ -51,7 +51,7 @@
             android:layout_marginRight="14dp"
             android:textSize="16sp"
             android:hint="@string/edu_email"
-            android:textColor="@color/header_button_default"
+            android:textColor="@color/header_grey"
             android:layout_marginBottom="8dp"
             android:lines="1"
             />
@@ -63,7 +63,7 @@
             android:layout_gravity="right"
             android:text="@string/continue_new_user"
             android:layout_marginRight="24dp"
-            android:textColor="@color/header_button_default"
+            android:textColor="@color/header_grey"
             />
 
 </LinearLayout>

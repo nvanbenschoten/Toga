@@ -66,5 +66,9 @@
     <string name="verify_email">Verify Email</string>
     <string name="title_activity_theme_picker">MainActivity</string>
     <string name="theme_picker">Theme Picker</string>
+    <string name="browse_party_no_parties_nearby">There are currently no parties near you...</string>
+    <string name="create_party_theme_description">Party theme</string>
+    <string name="create_party_date_dialog">Date</string>
+    <string name="create_party_time_dialog">Time</string>
 
 </resources>
