@@ -15,37 +15,61 @@ import android.widget.Toast;
 
 public class NewUserNameFragment extends Fragment {
 
-    private nameContinueButton mInterface;
+    private static final int max_name_length = 32;
+
     private LinearLayout mLinearLayout;
     private Button mContinueButton;
     private EditText mEmailEditText;
+
     private String mName;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-        mName = "";
-    }
+    private nameContinueButton mInterface;
 
+    /**
+     * Called when a fragment is first attached to its activity.
+     * @param activity The activity the fragment is attached to
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mInterface = (nameContinueButton)activity;
     }
 
+    /**
+     * Called when the fragment is first created. Responsible for initializing the fragment.
+     * Also initializes the mName field.
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+
+        // Initialize mName to blank
+        mName = "";
+    }
+
+    /**
+     * Called when the fragment is first created. Responsible for initializing the UI.
+     * @param inflater  The LayoutInflater object that can be used to inflate views in the fragment
+     * @param container The parent view that the fragment's UI should be attached to
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     * @return The View for the fragment's UI, or null.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.new_user_name, container, false);
+        assert v != null;
 
-        mLinearLayout = (LinearLayout)v.findViewById(R.id.new_user_name_layout);
+        // Obtain handles to UI objects
+        mLinearLayout = (LinearLayout) v.findViewById(R.id.new_user_name_layout);
+        mEmailEditText = (EditText) v.findViewById(R.id.new_user_name_edittext);
+        mContinueButton = (Button) v.findViewById(R.id.new_user_name_continue);
 
-        mEmailEditText = (EditText)v.findViewById(R.id.new_user_name_edittext);
+        // Register handler for UI elements
         mEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -53,39 +77,44 @@ public class NewUserNameFragment extends Fragment {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
-
-        mContinueButton = (Button)v.findViewById(R.id.new_user_name_continue);
         mContinueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (verifyName(mName)) {
-                    mInterface.nameButtonClicked(mName);
-                }
+                verifyName(mName);
             }
         });
 
         return v;
     }
 
-    private boolean verifyName(String name) {
+    /**
+     * Verifies the user has typed in a name and that it's under 32 characters.
+     * @param name String containing current name attempt
+     */
+    private void verifyName(String name) {
         if (name == null || name.length() == 0) {
-            Toast.makeText(getActivity(), "Please enter your name", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.new_user_enter_name),
+                    Toast.LENGTH_LONG).show();
         }
-        else if (name.length() > 32) {
-            Toast.makeText(getActivity(), "Names must be under 32 characters", Toast.LENGTH_LONG).show();
+        else if (name.length() > max_name_length) {
+            Toast.makeText(getActivity(), getResources().getString(R.string.new_user_name_length_limit),
+                    Toast.LENGTH_LONG).show();
         }
         else {
-            return true;
+            mInterface.nameButtonClicked(mName);
         }
-
-        return false;
     }
 
+    /**
+     * Interface which allows for communication from fragment to activity.
+     */
     public interface nameContinueButton {
+        /**
+         * Attempts to set the name of the new user.
+         * @param name String containing the name attempt
+         */
         public void nameButtonClicked(String name);
     }
 

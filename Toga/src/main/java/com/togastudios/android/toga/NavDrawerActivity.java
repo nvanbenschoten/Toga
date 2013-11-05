@@ -1,9 +1,7 @@
 package com.togastudios.android.toga;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.widget.Toast;
 
@@ -12,11 +10,11 @@ import com.parse.ParseUser;
 
 public class NavDrawerActivity extends NavDrawerFragmentActivity {
 
-    public static final String PREFS_USERNAME = "com.togasoftware.android.toga.username";
-    public static final String PREFS_PASSWORD = "com.togasoftware.android.toga.password";
-
-    private SharedPreferences mPrefs;
-
+    /**
+     * Determines which fragments correspond to which positions in the nav drawer.
+     * @param position The position on the nav drawer
+     * @return The fragment which should be inflated for the input position
+     */
     @Override
     protected Fragment getFragmentByPosition(int position) {
         switch (position) {
@@ -37,41 +35,54 @@ public class NavDrawerActivity extends NavDrawerFragmentActivity {
         }
     }
 
+    /**
+     * Determines the fragment position which should be set at application launch
+     * @return App launch nav drawer default position
+     */
     @Override
     protected int getFirstFrag() {
-        // Returns the frag that should start
         return 1;
     }
 
+    /**
+     * Called when the activity is first created. Responsible for initializing the activity.
+     * Signs user in and verifies email address.
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Gets hold of shared prefs
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-
         signIn();
         verifyEmail();
     }
 
+    /**
+     * Determines if the user is signed in, and if not, launches NewUserActivity.
+     */
     private void signIn() {
         ParseUser currentUser = ParseUser.getCurrentUser();
+
         if (currentUser == null) {
             // If no current user
-
-            Intent i = new Intent(this, NewUserActiviy.class);
+            Intent i = new Intent(this, NewUserActivity.class);
             startActivity(i);
             finish();
         }
     }
 
+    /**
+     * Verifies that the current user's email is verified.
+     */
     private void verifyEmail() {
         ParseUser currentUser = ParseUser.getCurrentUser();
+
+        // If no current user, re-sign in
         if (currentUser == null) {
             signIn();
             return;
         }
 
+        // Checks if verified
         if (currentUser.getBoolean("emailVerified"))
             return;
 
@@ -82,7 +93,7 @@ public class NavDrawerActivity extends NavDrawerFragmentActivity {
             e.printStackTrace();
         }
 
-        // If verified no, good
+        // Re-checks if the user is verified
         if (currentUser.getBoolean("emailVerified"))
             return;
 
@@ -90,17 +101,18 @@ public class NavDrawerActivity extends NavDrawerFragmentActivity {
         String mEmail = currentUser.getEmail();
 
         if (mEmail == null) {
-            Intent i = new Intent(this, NewUserActiviy.class);
+            Intent i = new Intent(this, NewUserActivity.class);
             startActivity(i);
             finish();
             return;
         }
+
         int ampIndex = mEmail.indexOf('@');
-        if (ampIndex == -1)
-            return;
+        assert ampIndex != -1;
 
         String domain = mEmail.substring(ampIndex + 1);
 
+        // Makes sure email is not a test email
         if (!domain.equals("test.edu")) {
             Intent i = new Intent(this, VerifyEmailActivity.class);
             i.putExtra(VerifyEmailFragment.EXTRA_EMAIL, mEmail);
@@ -111,4 +123,5 @@ public class NavDrawerActivity extends NavDrawerFragmentActivity {
         }
 
     }
+    
 }

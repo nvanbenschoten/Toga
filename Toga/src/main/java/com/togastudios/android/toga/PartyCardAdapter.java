@@ -1,7 +1,6 @@
 package com.togastudios.android.toga;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +12,23 @@ import java.util.ArrayList;
 
 public class PartyCardAdapter extends ArrayAdapter<Party> {
 
-    Typeface mRobotoThin;
-    ImageView mIconImageView;
-    ImageView mBigImageView;
-
+    /**
+     * Public constructor allows for PartyCardAdapter instantiation.
+     * @param context Context of invoking activity/ fragment
+     * @param parties ArrayList of parties to be adapter to a view
+     */
     public PartyCardAdapter(Context context, ArrayList<Party> parties) {
         super(context, 0, parties);
-        mRobotoThin = Typeface.createFromAsset(context.getAssets(), "fonts/roboto-thin.ttf");
+        //Typeface mRobotoThin = Typeface.createFromAsset(context.getAssets(), "fonts/roboto-thin.ttf");
     }
 
+    /**
+     * Get a View that displays the data at the specified position in the data set.
+     * @param position integer position of view in array
+     * @param convertView Old view to reuse, if possible. If not, is null
+     * @param parent The parent that this view will eventually be attached to
+     * @return View corresponding to the data at the specified position
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Not given a view
@@ -29,43 +36,26 @@ public class PartyCardAdapter extends ArrayAdapter<Party> {
             convertView = LayoutInflater.from(getContext())
                     .inflate(R.layout.card_list_item, null);
         }
+        assert convertView != null;
 
         // Configure view for this party
         Party party = getItem(position);
 
-        // Set theme image
-        mBigImageView = (ImageView)convertView.findViewById(R.id.cardImage);
-        mBigImageView.setImageResource(ThemePhotoBuilder.getThemeResource(party.getThemeId()));
+        // Obtain handles to UI objects
+        ImageView mBigImageView = (ImageView) convertView.findViewById(R.id.cardImage);
+        ImageView mIconImageView = (ImageView) convertView.findViewById(android.R.id.icon);
+        TextView titleTextView = (TextView) convertView.findViewById(android.R.id.title);
+        TextView contentTextView = (TextView) convertView.findViewById(android.R.id.content);
 
-        // Set icon image
-        mIconImageView = (ImageView)convertView.findViewById(android.R.id.icon);
-        String school = party.getSchool();
-        setImage(school);
-
-        // Set title
-        TextView titleTextView = (TextView)convertView.findViewById(android.R.id.title);
+        // Set data for UI elements
         titleTextView.setText(party.getTitle());
-
-        // Set details
-        TextView contentTextView = (TextView)convertView.findViewById(android.R.id.content);
         contentTextView.setText(party.getLocationString());
+        mBigImageView.setImageResource(PhotoBuilder.getThemeResource(party.getThemeId()));
+        PhotoBuilder.setSchoolImage(mIconImageView, party.getSchool());
 
         //ImageButton optionButton = (ImageButton)convertView.findViewById(android.R.id.button1);
 
         return convertView;
-    }
-
-    private void setImage(String school) {
-        if (school.equals("Northeastern"))
-            mIconImageView.setImageResource(R.drawable.logo_northeastern);
-        else if (school.equals("MIT"))
-            mIconImageView.setImageResource(R.drawable.logo_mit);
-        else if (school.equals("Boston University"))
-            mIconImageView.setImageResource(R.drawable.logo_bu);
-        else if (school.equals("Harvard"))
-            mIconImageView.setImageResource(R.drawable.logo_harvard);
-        else
-            mIconImageView.setImageResource(R.drawable.ic_launcher);
     }
 
 }

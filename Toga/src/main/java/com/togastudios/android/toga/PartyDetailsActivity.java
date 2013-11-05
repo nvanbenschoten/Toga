@@ -6,6 +6,7 @@ public class PartyDetailsActivity extends SingleFragmentActivity {
 
     /**
      * Extended method to determine which fragment to create in container of SingleFragmentActivity.
+     * Creates new PartyDetailsFragment instance using string extra from intent.
      * @return Fragment which will be inflated in container
      */
     @Override
@@ -13,4 +14,5 @@ public class PartyDetailsActivity extends SingleFragmentActivity {
         return PartyDetailsFragment.newInstance(getIntent().
                 getStringExtra(PartyDetailsFragment.EXTRA_PARTY));
     }
+
 }

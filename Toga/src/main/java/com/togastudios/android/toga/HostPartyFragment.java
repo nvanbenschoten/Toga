@@ -59,9 +59,9 @@ public class HostPartyFragment extends Fragment {
 
         // Obtain handles to UI objects
         mGridView = (GridView) v.findViewById(android.R.id.list);
-        mEmptyButton = (Button)v.findViewById(R.id.empty_host_party);
-        mProgressBar = (LinearLayout)v.findViewById(R.id.host_list_downloadProgress);
-        mContent = (FrameLayout)v.findViewById(R.id.host_list_content);
+        mEmptyButton = (Button) v.findViewById(R.id.empty_host_party);
+        mProgressBar = (LinearLayout) v.findViewById(R.id.host_list_downloadProgress);
+        mContent = (FrameLayout) v.findViewById(R.id.host_list_content);
         mEmptyLayout = (LinearLayout) v.findViewById(android.R.id.empty);
 
         // Register handler for UI elements

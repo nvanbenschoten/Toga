@@ -52,6 +52,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:inputType="text"
                 android:hint="@string/create_party_title_hint"/>
 
         <TextView
@@ -149,6 +150,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
+                android:inputType="text"
                 android:hint="@string/create_party_location_hint"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
@@ -160,6 +162,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
+                android:inputType="text"
                 android:minLines="5"
                 android:gravity="top|left"
                 android:hint="@string/create_party_description_hint"/>

@@ -55,8 +55,8 @@
         </activity>
 
         <activity
-            android:name="com.togastudios.android.toga.NewUserActiviy"
-            android:label="@string/register" >
+            android:name=".NewUserActivity"
+            android:label="@string/new_user_register" >
         </activity>
 
         <activity
@@ -68,6 +68,7 @@
             android:name="com.togastudios.android.toga.ThemePickerActivity"
             android:label="@string/theme_picker" >
         </activity>
+
     </application>
 
 </manifest>

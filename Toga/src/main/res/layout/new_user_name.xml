@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/new_user_name_layout"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#e5e5e5">
-              <!--android:background="@drawable/new_user_background"-->
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/new_user_name_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#e5e5e5">
+        <!--android:background="@drawable/new_user_background"-->
 
     <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textColor="@color/pressed_toga"
-            android:textSize="30sp"
-            android:text="@string/name"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:layout_marginTop="48dp"
             android:layout_marginLeft="24dp"
-            android:layout_gravity="left"
             android:layout_marginBottom="8dp"
-            />
+            android:textColor="@color/pressed_toga"
+            android:textSize="30sp"
+            android:text="@string/new_user_name"/>
 
     <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/header_grey"
             android:textSize="14sp"
-            android:text="What do you go by with friends?"
-            android:layout_marginLeft="26dp"
-            android:layout_gravity="left"
-            android:layout_marginBottom="8dp"
-            />
+            android:text="@string/new_user_name_with_friends"/>
 
     <EditText
             android:id="@+id/new_user_name_edittext"
-            android:inputType="text"
-            android:textColor="@color/header_grey"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
-            android:textSize="16sp"
-            android:hint="@string/first_and_last"
             android:layout_marginBottom="8dp"
-            android:lines="1"
-            />
+            android:inputType="text"
+            android:textColor="@color/header_grey"
+            android:textSize="16sp"
+            android:hint="@string/new_user_first_and_last"/>
 
     <Button
             android:id="@+id/new_user_name_continue"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/continue_new_user"
             android:layout_marginRight="24dp"
             android:textColor="@color/header_grey"
-            />
+            android:text="@string/new_user_continue"/>
 
 </LinearLayout>

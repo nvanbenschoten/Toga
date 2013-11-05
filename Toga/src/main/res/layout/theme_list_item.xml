@@ -3,24 +3,22 @@
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/theme_list_layout"
-        android:layout_height="96dp"
         android:layout_width="match_parent"
-        android:clickable="true"
+        android:layout_height="96dp"
         android:padding="4dp"
-        >
+        android:clickable="true">
 
         <ImageView
                 android:id="@+id/theme_list_photo"
-                android:layout_height="96dp"
                 android:layout_width="match_parent"
+                android:layout_height="96dp"
                 android:scaleType="centerCrop"
-                />
+                android:contentDescription="@string/theme_picker_description"/>
 
         <FrameLayout
                 android:id="@+id/theme_list_layout_background"
-                android:background="@drawable/themed_layout_background"
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                />
+                android:layout_height="match_parent"
+                android:background="@drawable/themed_layout_background"/>
 
 </FrameLayout>

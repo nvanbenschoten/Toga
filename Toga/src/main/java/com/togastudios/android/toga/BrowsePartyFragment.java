@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,8 +84,8 @@ public class BrowsePartyFragment extends Fragment {
     /**
      * Called after the fragment view first created. Responsible for initializing data based
      * on the UI.
-     * @param view                  The View returned by onCreateView
-     * @param savedInstanceState    Bundle state the fragment is saved in (null on clean start)
+     * @param view The View returned by onCreateView
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
      */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -97,8 +98,8 @@ public class BrowsePartyFragment extends Fragment {
 
     /**
      * Inflate menu for the fragment once the options menu has been created.
-     * @param menu      The options menu in which items are placed
-     * @param inflater  The MenuInflater object that can be used to inflate menu items in the menu
+     * @param menu The options menu in which items are placed
+     * @param inflater The MenuInflater object that can be used to inflate menu items in the menu
      */
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -108,7 +109,7 @@ public class BrowsePartyFragment extends Fragment {
 
     /**
      * Handle menu item selection interactions.
-     * @param item  The menu item that was selected
+     * @param item The menu item that was selected
      * @return false to allow normal menu processing to proceed, true to consume it here
      */
     @Override
@@ -156,9 +157,10 @@ public class BrowsePartyFragment extends Fragment {
         mProgressBar.setVisibility(View.VISIBLE);
         mContent.setVisibility(View.GONE);
 
-        // Queries for all parties
+        // Queries for all parties other than the current user's
         ParseQuery<Party> query = ParseQuery.getQuery(Party.class);
         query.setCachePolicy(ParseQuery.CachePolicy.NETWORK_ELSE_CACHE);
+        query.whereNotEqualTo(Party.hostKey, ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<Party>() {
             public void done(List<Party> partyList, ParseException e) {
                 if (getActivity() == null) return;

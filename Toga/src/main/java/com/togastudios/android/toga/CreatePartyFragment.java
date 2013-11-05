@@ -55,7 +55,7 @@ public class CreatePartyFragment extends Fragment {
 
     /**
      * Called when the fragment is first created. Responsible for initializing the fragment.
-     * Creates a new party and initializes its fields
+     * Creates a new party and initializes its fields.
      * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
      */
     @Override
@@ -96,7 +96,7 @@ public class CreatePartyFragment extends Fragment {
         mDescriptionField = (EditText) v.findViewById(R.id.create_party_description_editText);
 
         // Set theme image resource
-        mThemeImage.setImageResource(ThemePhotoBuilder.getThemeResource(mParty.getThemeId()));
+        mThemeImage.setImageResource(PhotoBuilder.getThemeResource(mParty.getThemeId()));
 
         // Register handler for UI elements
         mThemeLayout.setOnClickListener(new View.OnClickListener() {
@@ -201,7 +201,7 @@ public class CreatePartyFragment extends Fragment {
                 mParty.setThemeId(data.getIntExtra(ThemePickerFragment.EXTRA_THEME, 0));
 
                 // Sets image to the returned image
-                mThemeImage.setImageResource(ThemePhotoBuilder.getThemeResource(mParty.getThemeId()));
+                mThemeImage.setImageResource(PhotoBuilder.getThemeResource(mParty.getThemeId()));
                 break;
 
             default:
@@ -420,4 +420,5 @@ public class CreatePartyFragment extends Fragment {
 
         return true;
     }
+
 }

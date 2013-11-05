@@ -11,16 +11,28 @@ import android.widget.FrameLayout;
 
 public abstract class SingleFragmentActivity extends ActionBarActivity{
 
+    /**
+     * Determines which fragments should be inflated in the container.
+     * @return The fragment which should be inflated
+     */
     protected abstract Fragment createFragment();
 
-    protected int getLayourResId() {
+    /**
+     * Determines the layout for the activity to use. Can be extended and overridden by subclasses.
+     * @return The layout resource id which will be inflated
+     */
+    protected int getLayoutResId() {
         return R.layout.activity_fragment_no_drawer;
     }
 
+    /**
+     * Called when the activity is first created. Responsible for initializing the activity.
+     * @param savedInstanceState Bundle state the activity is saved in (null on clean start)
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayourResId());
+        setContentView(getLayoutResId());
         setWindowContentOverlayCompat();
 
         FragmentManager fm = getSupportFragmentManager();
@@ -34,8 +46,9 @@ public abstract class SingleFragmentActivity extends ActionBarActivity{
         }
     }
 
-    /* Deals with the bug where no shadow appears under the action
-       bar on android 4.3. Will be removed once bug is fixed.
+    /**
+     * Deals with the bug where no shadow appears under the action bar on android 4.3.
+     * Will be removed once bug is fixed.
      */
     private void setWindowContentOverlayCompat() {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.JELLY_BEAN_MR2) {
@@ -47,6 +60,7 @@ public abstract class SingleFragmentActivity extends ActionBarActivity{
                 TypedValue tv = new TypedValue();
 
                 // Get the windowContentOverlay value of the current theme
+                assert  getTheme() != null;
                 if (getTheme().resolveAttribute(
                         android.R.attr.windowContentOverlay, tv, true)) {
 

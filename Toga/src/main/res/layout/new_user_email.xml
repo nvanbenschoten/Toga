@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/new_user_email_layout"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:background="#e5e5e5">
-              <!--android:background="@drawable/new_user_background"-->
-
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/new_user_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#e5e5e5">
+        <!--android:background="@drawable/new_user_background"-->
 
     <ImageView
             android:id="@+id/new_user_email_picture"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="48dp"
             android:layout_marginRight="48dp"
-            android:src="@drawable/no_invitations"
             android:scaleType="centerInside"
-            />
+            android:src="@drawable/no_invitations"
+            android:contentDescription="@string/new_user_email_description"/>
 
     <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="24dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/pressed_toga"
             android:textSize="30sp"
-            android:text="@string/get_started"
-            android:layout_marginLeft="24dp"
-            android:layout_gravity="left"
-            android:layout_marginBottom="8dp"
-            />
+            android:text="@string/new_user_get_started"/>
 
     <TextView
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/header_grey"
             android:textSize="14sp"
-            android:text="@string/sign_up"
-            android:layout_marginLeft="26dp"
-            android:layout_gravity="left"
-            android:layout_marginBottom="8dp"
+            android:text="@string/new_user_sign_up"
             />
 
     <EditText
             android:id="@+id/new_user_email_edittext"
-            android:inputType="textEmailAddress"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
+            android:layout_marginBottom="8dp"
+            android:inputType="textEmailAddress"
             android:textSize="16sp"
             android:hint="@string/edu_email"
             android:textColor="@color/header_grey"
-            android:layout_marginBottom="8dp"
-            android:lines="1"
-            />
+            android:lines="1"/>
 
     <Button
             android:id="@+id/new_user_email_continue"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="@string/continue_new_user"
             android:layout_marginRight="24dp"
-            android:textColor="@color/header_grey"
-            />
+            android:text="@string/new_user_continue"
+            android:textColor="@color/header_grey"/>
 
 </LinearLayout>

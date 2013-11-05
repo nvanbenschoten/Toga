@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class LocationPickerFragment extends DialogFragment {
 
+    private static final String TAG = "LocationPickerFragment";
     public static final String EXTRA_STRING_LOC =
             "com.togastudios.android.toga.location_picker_string";
     public static final String EXTRA_LOCATION =
@@ -33,63 +35,77 @@ public class LocationPickerFragment extends DialogFragment {
 
     private EditText mEditText;
     private ImageButton mMyLocationButton;
+
     private String mLocationString;
     private Location mLocation;
-
     private Geocoder mGeocoder;
     private Location mCurrentLocation;
 
     private boolean useMyLocation;
     private boolean changed;
 
+    /**
+     * Creates a new instance of the LocationPickerFragment dialog with arguments set.
+     * @param locationString Previous location as a string
+     * @param location  Previous location
+     * @return  LocationPickerFragment with arguments set
+     */
     public static LocationPickerFragment newInstance(String locationString, Location location) {
         // Sets args
         Bundle args = new Bundle();
         args.putString(EXTRA_STRING_LOC, locationString);
         args.putParcelable(EXTRA_LOCATION, location);
 
+        // Create new fragment
         LocationPickerFragment fragment = new LocationPickerFragment();
         fragment.setArguments(args);
 
         return fragment;
     }
 
+    /**
+     * Called when the fragment is first created. Responsible for initializing the fragment.
+     * @param savedInstanceState Bundle state the fragment is saved in (null on clean start)
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_location_picker, null);
+        assert v != null;
 
-        // Get decoder
+        // Make sure geocoder is available and gain handle to it
         if (!Geocoder.isPresent()) {
             Toast.makeText(getActivity(), "Geocoder not available.", Toast.LENGTH_LONG).show();
             getDialog().dismiss();
         }
         mGeocoder = new Geocoder(getActivity());
 
-        // Setup edit text with listener
-        mEditText = (EditText)v.findViewById(R.id.location_picker_edittext);
+        // Get fragment arguments
+        mLocationString = getArguments().getString(EXTRA_STRING_LOC);
+        mLocation = getArguments().getParcelable(EXTRA_LOCATION);
+
+        // Obtain handles to UI objects
+        mEditText = (EditText) v.findViewById(R.id.location_picker_edittext);
+        mMyLocationButton = (ImageButton) v.findViewById(R.id.location_picker_button);
+
+        // Register handler for UI elements
         mEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Set fields
                 changed = true;
                 useMyLocation = false;
                 mEditText.setTextColor(Color.BLACK);
 
+                // Set string to s
                 mLocationString = s.toString();
             }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
-            }
+            public void afterTextChanged(Editable s) {}
         });
-
-        // Setup my location button
-        mMyLocationButton = (ImageButton)v.findViewById(R.id.location_picker_button);
         mMyLocationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +113,9 @@ public class LocationPickerFragment extends DialogFragment {
             }
         });
 
-        // Get arguments
-        mLocationString = getArguments().getString(EXTRA_STRING_LOC);
-        mLocation = getArguments().getParcelable(EXTRA_LOCATION);
-
-        // If passed in legit data
+        // Checks passed in arguments and handles acordingly
         if (mLocationString != null && mLocation != null) {
-            // Set changed tp false and set edittext
+            // Set changed to false and set edit text
             changed = false;
             mEditText.setText(mLocationString);
         } else {
@@ -113,7 +125,8 @@ public class LocationPickerFragment extends DialogFragment {
             mLocation = new Location("LocationPickerFragment");
         }
 
-        setupListener();
+        // Set location listener
+        setupLocationListener();
 
         // Return alert dialog
         return new AlertDialog.Builder(getActivity())
@@ -128,44 +141,48 @@ public class LocationPickerFragment extends DialogFragment {
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // TODO
                     }
                 })
                 .create();
     }
 
-    private void setupListener() {
+    /**
+     * Sets up location listener to handle changes in users location.
+     */
+    private void setupLocationListener() {
         // Set use my location to false and disable the button
         useMyLocation = false;
         mMyLocationButton.setEnabled(false);
 
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        // Get hold of location manager
+        LocationManager locationManager = (LocationManager) getActivity().
+                getSystemService(Context.LOCATION_SERVICE);
+
+        // Request location updates
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 // Set current location and enable location button
+                Log.d(TAG, "Location recieved");
                 mCurrentLocation = location;
                 mMyLocationButton.setEnabled(true);
             }
 
             @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-            }
+            public void onStatusChanged(String provider, int status, Bundle extras) {}
 
             @Override
-            public void onProviderEnabled(String provider) {
-
-            }
+            public void onProviderEnabled(String provider) {}
 
             @Override
-            public void onProviderDisabled(String provider) {
-
-            }
+            public void onProviderDisabled(String provider) {}
         });
-
     }
 
+    /**
+     * Handles the dialog's positive button action. Sets result code and returns intent with
+     * geocode location if needed.
+     */
     private void positiveButton() {
         // Returns if no target fragment
         if (getTargetFragment() == null) {
@@ -178,7 +195,6 @@ public class LocationPickerFragment extends DialogFragment {
         i.putExtra(EXTRA_LOCATION, mLocation);
         int resultCode = Activity.RESULT_OK;
 
-
         if (!changed) {
             // If not changed, return canceled
             resultCode = Activity.RESULT_CANCELED;
@@ -189,7 +205,6 @@ public class LocationPickerFragment extends DialogFragment {
         else {
             if (mLocationString.length() == 0 || mLocationString.equals("")) {
                 // If location string is blank, cancel
-
             } else {
                 // Else, try to geocode
                 try {
@@ -197,7 +212,8 @@ public class LocationPickerFragment extends DialogFragment {
 
                     if (addresses == null || addresses.size() == 0) {
                         // Result of geocode bad
-                        Toast.makeText(getActivity(), "Could not resolve location.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Could not resolve location.",
+                                Toast.LENGTH_LONG).show();
                         resultCode = Activity.RESULT_CANCELED;
                     } else {
                         // Result good
@@ -216,6 +232,9 @@ public class LocationPickerFragment extends DialogFragment {
         getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
     }
 
+    /**
+     * Handles the MyLocation button action. Sets location to current location.
+     */
     private void myLocationButton() {
         // Set changed and use my location
         changed = true;
@@ -223,16 +242,19 @@ public class LocationPickerFragment extends DialogFragment {
         mEditText.setText("My Location");
         mEditText.setTextColor(getResources().getColor(R.color.pressed_toga));
 
+        // location field is set to my location
         mLocation = mCurrentLocation;
         mLocationString = "";
 
         // Try to set the location string
         try {
-            List<Address> addresses = mGeocoder.getFromLocation(mLocation.getLatitude(), mLocation.getLongitude(), 1);
+            List<Address> addresses = mGeocoder.getFromLocation(mLocation.getLatitude(),
+                    mLocation.getLongitude(), 1);
 
             if (addresses.size() == 0) {
                 Toast.makeText(getActivity(), "Could not resolve location.", Toast.LENGTH_LONG).show();
             } else {
+                // Adds geocode location string to locationString
                 for (int i=0; i < addresses.get(0).getMaxAddressLineIndex(); i++) {
                     if (!(i==0))
                         mLocationString += "  ";
